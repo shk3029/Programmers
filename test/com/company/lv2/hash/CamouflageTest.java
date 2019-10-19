@@ -9,30 +9,37 @@ import java.util.HashMap;
 public class CamouflageTest {
     // param
     String[][] clothes = {{"1", "a"}, {"2", "b"}, {"3", "c"}, {"4", "a"}};
-
+    /*
+        경우의수 : a,b,c 모두 (1, 2, 3) (4, 2, 3)
+               : a,b (1,2), (4,2)
+               : a,c (1,3), (4,3)
+               : b,c (2,3)
+               : a (1), (4)
+               : b (2)
+               : c (3)
+               총 12개
+               -> 각각 안입는 경우의 수 1을 더하고 a(3) x b(2) x c(2) = 12개 - 1(모두 안입는 경우)
+     */
     @Test
     @TestDescription("통합 테스트 : (a, 1), (b,1) 이렇게 value의 수만큼 생성된 맵에서 경우의 수를 더함")
     public void all_Test() {
         System.out.println(">>>> Hash -위장 테스트 추가 ");
         int sum = 1;
-        var result = getCountSameValue();
-        /*
-            경우의수 : a,b,c 모두 (1, 2, 3) (4, 2, 3)
-                   : a,b (1,2), (4,2)
-                   : a,c (1,3), (4,3)
-                   : b,c (2,3)
-                   : a (1), (4)
-                   : b (2)
-                   : c (3)
-                   총 12개
-                   -> 각각 안입는 경우의 수 1을 더하고 a(3) x b(2) x c(2) = 12개 - 1(모두 안입는 경우)
-         */
+        // var result = getCountSameValue(); // 내가 처음짠 코드
+        var result = refactoringMap(); // 리팩토링 코드
         for(String key : result.keySet()) {
             sum *= (result.get(key)+1);
         }
         System.out.println(sum);
         // 모두 안입는 경우 제외
         Assert.assertEquals((long)11, sum -= 1);
+    }
+
+    @Test
+    @TestDescription("리팩토링 : String[][]를 바로 HashMap<String, Integer>로 전환")
+    public void refactoring() {
+        var map = refactoringMap();
+        Assert.assertEquals((long)2, (long)map.get("a"));
     }
 
     @Test
@@ -67,7 +74,6 @@ public class CamouflageTest {
         return result;
     }
 
-
     private HashMap<String, String> fromStringToMap() {
         var map = new HashMap<String, String>();
         for(int i=0; i<clothes.length; i++) {
@@ -85,4 +91,17 @@ public class CamouflageTest {
         return map;
     }
 
+
+    private HashMap<String, Integer> refactoringMap() {
+        var map = new HashMap<String, Integer>();
+        for(String[] strs : clothes) {
+            int count = 0;
+            String key = strs[1]; // 각 배열의 두번째 원소를 키 값으로 저장
+            if(map.containsKey(key)) {
+                count = map.get(key);
+            }
+            map.put(key, count+1);
+        }
+        return map;
+    }
 }
