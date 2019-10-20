@@ -2,13 +2,11 @@ package com.company.lv2.hash;
 
 import com.company.common.TestDescription;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import java.util.HashMap;
 
 // 프로그래머스 해시 - 위장(Level2)
-public class CamouflageTest {
-    // param
-    String[][] clothes = {{"1", "a"}, {"2", "b"}, {"3", "c"}, {"4", "a"}};
     /*
         경우의수 : a,b,c 모두 (1, 2, 3) (4, 2, 3)
                : a,b (1,2), (4,2)
@@ -20,6 +18,15 @@ public class CamouflageTest {
                총 12개
                -> 각각 안입는 경우의 수 1을 더하고 a(3) x b(2) x c(2) = 12개 - 1(모두 안입는 경우)
      */
+public class CamouflageTest {
+    // param
+    String[][] clothes = null;
+
+    @Before
+    public void setUp() {
+        clothes = new String[][]{{"1", "a"}, {"2", "b"}, {"3", "c"}, {"4", "a"}};
+    }
+
     @Test
     @TestDescription("통합 테스트 : (a, 1), (b,1) 이렇게 value의 수만큼 생성된 맵에서 경우의 수를 더함")
     public void all_Test() {
@@ -90,7 +97,6 @@ public class CamouflageTest {
         }
         return map;
     }
-
 
     private HashMap<String, Integer> refactoringMap() {
         var map = new HashMap<String, Integer>();
