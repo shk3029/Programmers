@@ -1,4 +1,7 @@
-package com.company.leetcode.graph.easy;
+package com.company.leetcode.graph.easy.problem;
+
+import com.company.leetcode.graph.easy.Graph;
+import com.company.leetcode.graph.easy.Vertex;
 
 import java.util.List;
 import java.util.Map;

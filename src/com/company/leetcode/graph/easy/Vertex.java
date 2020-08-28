@@ -3,7 +3,7 @@ package com.company.leetcode.graph.easy;
 import java.util.Objects;
 
 public class Vertex {
-    int label;
+    public int label;
 
     public Vertex(int label) {
         this.label = label;
