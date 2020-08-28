@@ -5,10 +5,24 @@ import com.company.interview.IX.Array_01;
 public class Main {
 
     public static void main(String[] args) {
-        // 1.1
-        Array_01 array01 = new Array_01();
-        System.out.println(array01.checkDuplicate("정종"));
-        System.out.println(array01.checkDuplicate("정종정정선"));
 
+    }
+
+    public int solution(int n, int[][] results) {
+        int answer = 0;
+
+        int[][] array = new int[n][n];
+
+
+
+        // 지나가는 K
+        for(int k=0; k<n; k++) {
+            for(int i=0; i<n; i++) {
+                for(int j=0; j<n; j++) {
+
+                }
+            }
+        }
+        return answer;
     }
 }
