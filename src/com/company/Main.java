@@ -1,7 +1,5 @@
 package com.company;
 
-import com.company.interview.IX.Array_01;
-
 public class Main {
 
     public static void main(String[] args) {
