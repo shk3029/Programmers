@@ -17,6 +17,15 @@ public class Immigration {
     public long solution(int n, int[] times) {
         long answer = Long.MAX_VALUE;
 
+        Arrays.sort(times);
+        long left = 1, right = times[times.length-1] * n;
+        // left : 1, right : 60 (10*6)
+        long mid = 0;
+
+        while (left <= right) {
+
+        }
+
         return answer;
     }
 }
