@@ -1,8 +1,6 @@
 package com.company.programmers.binarysearch;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Immigration {
     public static void main(String[] args) {
