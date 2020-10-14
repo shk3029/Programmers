@@ -2,7 +2,7 @@ package com.company.lv2.hash;
 
 import java.util.HashMap;
 
-// 위장
+
 public class Camouflage {
 
     //String[][] clothes = {{"1", "a"}, {"2", "b"}, {"3", "c"}, {"4", "a"}};
