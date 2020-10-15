@@ -8,7 +8,7 @@ public class Fish {
         int fish_0_cnt = 0;
         Stack<Integer> fish_1_stack = new Stack<>();
 
-        for (int i=0; i<A.length; i++) {
+        for (int i = 0; i < A.length; i++) {
             int fishNum = A[i];
             if (B[i] == 1) {
                 fish_1_stack.push(fishNum);
@@ -17,7 +17,7 @@ public class Fish {
                     fish_0_cnt++;
                 } else {
                     int size = fish_1_stack.size();
-                    for (int j=0; j<size; j++) {
+                    for (int j = 0; j < size; j++) {
                         int pop = fish_1_stack.pop();
                         if (fishNum < pop) {
                             fish_1_stack.push(pop);
@@ -31,10 +31,11 @@ public class Fish {
 
         return fish_0_cnt + fish_1_stack.size();
     }
+
     public static void main(String[] args) {
         Fish fish = new Fish();
-        int[] A = {4,3,2,1,5};
-        int[] B = {1,1,1,1,0};
-        System.out.println(fish.solution(A,B));
+        int[] A = {4, 3, 2, 1, 5};
+        int[] B = {1, 1, 1, 1, 0};
+        System.out.println(fish.solution(A, B));
     }
 }

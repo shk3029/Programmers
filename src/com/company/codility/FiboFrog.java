@@ -15,7 +15,7 @@ import java.util.*;
 public class FiboFrog {
     public static void main(String[] args) {
         FiboFrog fiboFrog = new FiboFrog();
-        int[] A = {0,0,0,1,1,0,1,0,0,0,0};
+        int[] A = {1,1,0,1,1,1,1,1,0,0,1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,1,1,1,1};
         int solution = fiboFrog.solution(A);
         System.out.println(solution);
     }
@@ -35,7 +35,9 @@ public class FiboFrog {
         queue.add(new Point(-1, 0)); // 시작점
 
         while(!queue.isEmpty()) {
+
             Point currentPoint = queue.poll();
+
             for (int fibo : fiboList) {
                 int next = currentPoint.x + fibo;
                 if (next == N) {
@@ -67,14 +69,6 @@ public class FiboFrog {
         public Point(int x, int y) {
             this.x = x;
             this.y = y;
-        }
-
-        @Override
-        public String toString() {
-            return "Point{" +
-                    "x=" + x +
-                    ", y=" + y +
-                    '}';
         }
     }
 }
