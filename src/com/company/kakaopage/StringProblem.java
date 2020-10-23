@@ -4,8 +4,7 @@ public class StringProblem {
 
     public static void main(java.lang.String[] args) {
         StringProblem main = new StringProblem();
-        main.solution("http://page.kakao.com/store");
-
+        main.solution("http://_page.kakao.com/store");
     }
 
     public String solution(String s) {
@@ -21,13 +20,14 @@ public class StringProblem {
                 isBeforeAlpha = false;
             }
         }
+        System.out.println(stringBuilder.toString());
         return stringBuilder.toString();
     }
 
     public static boolean isAlphaNum(char c) {
         int index = (int)c;
         if (index >= 48 && index <= 57) return true;
-        if (index >= 65 && index <= 122) return true;
+        if ((index >= 65 && index <= 90) || (index >= 97) && (index <= 122)) return true;
         return false;
     }
 
