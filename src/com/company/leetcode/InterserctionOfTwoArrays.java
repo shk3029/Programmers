@@ -32,7 +32,7 @@ public class InterserctionOfTwoArrays {
 
     static boolean binary_search(int[] arr, int key) {
         int low = 0;
-        int high = arr.length;
+        int high = arr.length-1;
 
         while (low <= high) {
             int mid = (low + high) / 2;
