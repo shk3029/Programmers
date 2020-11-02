@@ -1,7 +1,5 @@
 package com.company.leetcode;
 
-import com.sun.source.tree.Tree;
-
 import java.util.*;
 
 public class BinaryTreeLevel_107 {
@@ -18,7 +16,7 @@ public class BinaryTreeLevel_107 {
 
         // bfs 재귀 방식
         List<List<Integer>> levelTraversal = new ArrayList<List<Integer>>();
-        traverse(root, levelTraversal, 0);
+        recursion(root, levelTraversal, 0);
         Collections.reverse(levelTraversal);
 
     }
@@ -38,46 +36,45 @@ public class BinaryTreeLevel_107 {
         return result;
     }
 
-    static void bfs(TreeNode treeNode, Stack<List<Integer>> stack) {
+static void bfs(TreeNode treeNode, Stack<List<Integer>> stack) {
 
-        Queue<List<TreeNode>> queue = new LinkedList<>();
-        queue.add(List.of(treeNode));
-        stack.push(List.of(treeNode.val));
+    Queue<List<TreeNode>> queue = new LinkedList<>();
+    queue.add(List.of(treeNode));
+    stack.push(List.of(treeNode.val));
 
-        while (!queue.isEmpty()) {
-            List<TreeNode> poll = queue.poll();
-            List<TreeNode> queueList = new ArrayList<>();
-            List<Integer> stackList = new ArrayList<>();
+    while (!queue.isEmpty()) {
+        List<TreeNode> poll = queue.poll();
+        List<TreeNode> queueList = new ArrayList<>();
+        List<Integer> stackList = new ArrayList<>();
 
-            for (TreeNode node : poll) {
-                if (node.left != null) {
-                    queueList.add(node.left);
-                    stackList.add(node.left.val);
-                }
-                if (node.right != null) {
-                    queueList.add(node.right);
-                    stackList.add(node.right.val);
-                }
+        for (TreeNode node : poll) {
+            if (node.left != null) {
+                queueList.add(node.left);
+                stackList.add(node.left.val);
             }
-
-            if (!queueList.isEmpty()) queue.add(queueList);
-            if (!stackList.isEmpty()) stack.push(stackList);
+            if (node.right != null) {
+                queueList.add(node.right);
+                stackList.add(node.right.val);
+            }
         }
+
+        if (!queueList.isEmpty()) queue.add(queueList);
+        if (!stackList.isEmpty()) stack.push(stackList);
     }
+}
 
 
-    private static void traverse(TreeNode root, List<List<Integer>> levelTraversal, int level) {
-        if(root == null) {
-            return;
-        }
-        while(levelTraversal.size() <= level) {
-            levelTraversal.add(new ArrayList<>());
-        }
-        levelTraversal.get(level).add(root.val);
-        traverse(root.left, levelTraversal, level+1);
-        traverse(root.right, levelTraversal, level+1);
-
+private static void recursion(TreeNode root, List<List<Integer>> levelTraversal, int level) {
+    if(root == null) {
+        return;
     }
+    while(levelTraversal.size() <= level) {
+        levelTraversal.add(new ArrayList<>());
+    }
+    levelTraversal.get(level).add(root.val);
+    recursion(root.left, levelTraversal, level+1);
+    recursion(root.right, levelTraversal, level+1);
+}
 
     public static class TreeNode {
         int val;

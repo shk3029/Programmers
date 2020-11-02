@@ -3,24 +3,34 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
+        Main main = new Main();
+        main.solution(new long[]{1,9,22,1134903172});
 
     }
 
-    public int solution(int n, int[][] results) {
-        int answer = 0;
+    public long[] solution(long[] longArr) {
+        int N = 60;
+        long[] memo = new long[N+1];
+        fibMemoization(N, memo);
 
-        int[][] array = new int[n][n];
+        long[] result = new long[longArr.length+1];
 
-
-
-        // 지나가는 K
-        for(int k=0; k<n; k++) {
-            for(int i=0; i<n; i++) {
-                for(int j=0; j<n; j++) {
-
+        for (int i=0; i<longArr.length; i++) {
+            for (int j=0; j<memo.length; j++) {
+                if (longArr[i] < memo[j]) {
+                    result[i] = memo[j];
+                    System.out.println(result[i]);
+                    break;
                 }
             }
         }
-        return answer;
+        return result;
     }
+
+    private static long fibMemoization(int n, long[] memo) {
+        if (memo[n] != 0) return memo[n]; // 기록해 둔 것이 있으면 사용
+        memo[n] = (n == 1 || n == 2) ? 1 : fibMemoization(n-1, memo) + fibMemoization(n-2, memo); // 기록해 둔 것이 없으면 계산하고 기록
+        return memo[n];
+    }
+
 }
