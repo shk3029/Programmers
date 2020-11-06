@@ -1,5 +1,7 @@
 package com.company.leetcode.section.section1;
 
+import java.util.*;
+
 /**
 https://leetcode.com/problems/valid-parentheses/
 20. Valid Parentheses
@@ -30,7 +32,52 @@ Input: s = "{[]}"
 Output: true
  */
 public class ValidParentheses {
-    public boolean isValid(String s) {
-        return false;
+
+    public static void main(String[] args) {
+        isValid("([]){");
     }
+
+    public static boolean isValid(String s) {
+        boolean result = false;
+        Map<Character, Character> map = new HashMap<>();
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('}', '{');
+
+        Stack<Character> open_stack = new Stack<>();
+        Set<Character> open_set = new HashSet<>();
+        open_set.addAll(Set.of('(','[','{'));
+        Set<Character> close_set = new HashSet<>();
+        close_set.addAll(Set.of(')',']','}'));
+
+        for (char c  : s.toCharArray()) {
+            if (open_set.contains(c)) {
+                open_stack.push(c);
+            } else if (close_set.contains(c)) {
+                char close_c = map.get(c);
+                if (open_stack.isEmpty()) {
+                    result = false;
+                } else {
+                    result =  close_c == open_stack.pop() ? true : false;
+                }
+                if (!result) break;
+            }
+        }
+
+        result = open_stack.isEmpty() ? result : false;
+        return result;
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
