@@ -1,4 +1,4 @@
-package com.company.leetcode.section.section1;
+package com.company.study.section.section1;
 
 import java.util.*;
 

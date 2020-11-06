@@ -1,9 +1,4 @@
-package com.company.leetcode.section.section1;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+package com.company.study.section.section1;
 
 /**
 https://leetcode.com/problems/two-sum/
