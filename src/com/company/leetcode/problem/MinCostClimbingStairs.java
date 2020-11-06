@@ -1,4 +1,4 @@
-package com.company.leetcode;
+package com.company.leetcode.problem;
 
 public class MinCostClimbingStairs {
     public static void main(String[] args) {
