@@ -1,6 +1,6 @@
 package com.company.leetcode.section.section1;
 
-/*
+/**
 https://leetcode.com/problems/valid-parentheses/
 20. Valid Parentheses
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',
@@ -30,4 +30,7 @@ Input: s = "{[]}"
 Output: true
  */
 public class ValidParentheses {
+    public boolean isValid(String s) {
+        return false;
+    }
 }

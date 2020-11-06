@@ -1,6 +1,6 @@
 package com.company.leetcode.section.section1;
 
-/*
+/**
 https://leetcode.com/problems/two-sum/
 1. Two Sum
 Given an array of integers nums and an integer target,
@@ -24,4 +24,8 @@ Output: [0,1]
  */
 
 public class TwoSum {
+
+    public int[] twoSum(int[] nums, int target) {
+        return new int[]{};
+    }
 }
