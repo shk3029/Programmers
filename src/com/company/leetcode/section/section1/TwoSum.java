@@ -1,5 +1,10 @@
 package com.company.leetcode.section.section1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
 https://leetcode.com/problems/two-sum/
 1. Two Sum
@@ -25,7 +30,71 @@ Output: [0,1]
 
 public class TwoSum {
 
-    public int[] twoSum(int[] nums, int target) {
-        return new int[]{};
+    public static void main(String[] args) {
+        int[] exArr_1 = {2, 7, 11, 15};
+        int target_1 = 9;
+
+        int[] exArr_2 = {3, 2, 4};
+        int target_2 = 6;
+
+        int[] exArr_3 = {0,4,3,0};
+        int target_3 = 0;
+
+        for (int i : twoSum(exArr_3, target_3))
+            System.out.print(i);
+    }
+
+
+    public static int[] twoSum(int[] nums, int target) {
+
+        int[] result = new int[2];
+
+        for (int i=0; i<nums.length; i++) {
+            int s = target - nums[i];
+            for (int j=i+1; j<nums.length; j++) {
+                if (nums[j] == s) {
+                    result[0] = i;
+                    result[1] = j;
+                }
+            }
+        }
+
+        return result;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
