@@ -67,7 +67,6 @@ public class ValidParentheses {
         result = open_stack.isEmpty() ? result : false;
         return result;
     }
-
 }
 
 
