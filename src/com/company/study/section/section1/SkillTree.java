@@ -1,5 +1,8 @@
 package com.company.study.section.section1;
 
+import java.nio.channels.SelectionKey;
+import java.util.*;
+
 /**
 선행 스킬이란 어떤 스킬을 배우기 전에 먼저 배워야 하는 스킬을 뜻합니다.
 예를 들어 선행 스킬 순서가 스파크 → 라이트닝 볼트 → 썬더일때, 썬더를 배우려면 먼저 라이트닝 볼트를 배워야 하고,
@@ -30,8 +33,52 @@ BDA: B 스킬을 배우기 전에 C 스킬을 먼저 배워야 합니다. 불가
  */
 public class SkillTree {
 
-    public int solution(String skill, String[] skill_trees) {
-        int answer = 0;
-        return answer;
+    public static void main(String[] args) {
+        String skill = "CBD";
+        String[] skill_trees = {"BACDE", "CBADF", "AECB", "BDA"};
+
+        solution(skill, skill_trees);
+    }
+
+    public static int solution(String skill, String[] skill_trees) {
+        Map<Character, Integer> map = new HashMap<>();
+        char[] skillArray = skill.toCharArray();
+        for (int i=0; i<skillArray.length; i++) map.put(skillArray[i], skillArray.length-i);
+
+        int count = 0;
+        for (String s : skill_trees) {
+            int before = 0;
+            char[] charArray = s.toCharArray();
+            for (int i=0; i<charArray.length; i++) {
+                if (map.containsKey(charArray[i])) {
+                    if (before == 0) {
+                        if (charArray[i] != skillArray[0]) break;
+                        before = map.get(charArray[i]);
+                    } else {
+                        int sum = before - map.get(charArray[i]);
+                        before = map.get(charArray[i]);
+                        if (sum != 1) break;
+                    }
+                }
+                if (i == charArray.length-1) count++;
+            }
+        }
+
+        return count;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
