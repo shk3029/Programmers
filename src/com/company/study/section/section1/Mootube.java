@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/**
+ * [https://www.acmicpc.net/problem/15591](https://www.acmicpc.net/problem/15591)
+ */
 public class Mootube {
     public static void main(String[] args) throws IOException {
 
@@ -53,7 +56,6 @@ public class Mootube {
 
         public int dfs(int k, int s) {
             int result = 0;
-            List<Integer> bfsList = new LinkedList<>();
             Stack<Integer> stack = new Stack<>();
             boolean[] visited = new boolean[node+1];
 
@@ -61,7 +63,6 @@ public class Mootube {
             stack.add(s);
             while (!stack.isEmpty()) {
                 int pop = stack.pop();
-                bfsList.add(pop);
 
                 Iterator<Edge> iterator =  adjacencylist[pop].listIterator();
                 while (iterator.hasNext()) {
