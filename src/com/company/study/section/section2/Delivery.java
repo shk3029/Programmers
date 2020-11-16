@@ -51,30 +51,23 @@ public class Delivery {
 
       while (!priorityQueue.isEmpty()) {
         Edge curEdge = priorityQueue.poll();
-        System.out.println("curEdge : " + curEdge );
 
         int curDestination = curEdge.destination;
         int curDistance = curEdge.distance;
-        System.out.println(Arrays.toString(dist));
-        System.out.println(curDestination + " : " + dist[curDestination] + " : " + curDistance);
 
-        if (dist[curDestination] < curDistance) { // 저장된 거리보다 이미 현재 거리가 크면 패스
-          System.out.println("continue~~");
-          continue;
-        }
+        if (dist[curDestination] < curDistance) continue;
+
 
         List<Edge> nextEdge = graph.get(curDestination);
-        System.out.println("curDestination : " + curDestination + " nextEdge : " + nextEdge);
         for (int i=0; i<nextEdge.size(); i++) {
           int nextDestination = nextEdge.get(i).destination;
           int nextDistance = nextEdge.get(i).distance;
 
-          if (dist[nextDestination] > curDistance + nextDistance) {
+          if (dist[nextDestination] >= curDistance + nextDistance) {
             dist[nextDestination] = curDistance + nextDistance;
             priorityQueue.offer(new Edge(nextDestination, dist[nextDestination]));
           }
         }
-        System.out.println("-------------------------");
       }
 
     }
@@ -93,14 +86,6 @@ public class Delivery {
     @Override
     public int compareTo(Edge o) {
       return Integer.compare(this.distance, o.distance); // 오름차순
-    }
-
-    @Override
-    public String toString() {
-      return "Edge{" +
-        "destination=" + destination +
-        ", distance=" + distance +
-        '}';
     }
   }
 
