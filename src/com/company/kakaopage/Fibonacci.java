@@ -32,5 +32,4 @@ public class Fibonacci {
         memo[n] = (n == 1 || n == 2) ? 1 : fibMemoization(n-1, memo) + fibMemoization(n-2, memo); // 기록해 둔 것이 없으면 계산하고 기록
         return memo[n];
     }
-
 }
